@@ -12,26 +12,41 @@
             <h1>Job Board</h1>
         </header>
 
-        <body>
-            <form>
-                <label>Email</label>
-                <input type="email">
-                <label>Password</label>
-                <input type="password">
-                <label>Name</label>
-                <input type="name">
-                <label>Candidate</label>
-                <input type="radio">
-                <label>Company</label>
-                <input type="radio">
-                <label>Phone</label>
-                <input type="phone">
+        <main>
+            <form id="registerForm">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+                
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+                
+                <div>
+                    <label>
+                        <input type="radio" name="status" value="candidate" checked>
+                        Candidate
+                    </label>
+                    <label>
+                        <input type="radio" name="status" value="company">
+                        Company
+                    </label>
+                </div>
+                
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone">
+                
                 <button type="submit">Submit</button>
             </form>
-        </body>
+            
+            <p>Already have an account? <a href="/">Login here</a></p>
+        </main>
 
         <footer>
             <p>&copy; Pré-MSC REN-1</p>
         </footer>
+
+        <script src="../js/register.js"></script>
     </body>
 </html>

@@ -28,6 +28,7 @@ app.use(session({
 const authRoute = require('./backEnd/routes/authRoute');
 app.use('/api/auth', authRoute);
 const applicantRoute = require('./backEnd/routes/applicantRoute');
+app.use('/api/applicant', applicantRoute);
 
 app.get('/register', (req, res) => {
   res.sendFile(path.join(__dirname, 'frontEnd', 'html', 'register.html'));
