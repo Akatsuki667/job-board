@@ -1,0 +1,33 @@
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelector('button').addEventListener('click', async (e) => {
+        e.preventDefault;
+        const email = document.getElementById('email');
+        const password = document.getElementById('password');
+
+        const loginData = {
+            email: email,
+            password: password
+        }
+
+        try {
+            const response = await fetch('/api/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type' : 'application/json'
+                },
+                body: JSON.stringify(loginData)
+            })
+
+            const data = await response.json();
+
+            if (response.ok) {
+                console.log('User is connected');
+                setTimeout(() => {
+                    window.location.href = data.redirect;
+                }, 1000);
+            }
+        } catch (error) {
+            console.error('Error server', error);
+        }
+    });
+})
