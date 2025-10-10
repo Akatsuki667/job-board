@@ -54,7 +54,7 @@ const register = async (req, res) => {
                 status : newUser.status,
                 phone : newUser.phone
             },
-            redirect: '/login.html'
+            redirect: '/'
         });
     } catch (error) {
         console.error("Error in register", error);
@@ -93,7 +93,7 @@ const login = async (req, res) => {
                 status: existingUser.status,
                 phone: existingUser.phone
             },
-            redirect: '../frontEnd/html/candidate.html'
+            redirect: '/candidate'
         });
     } catch (error) {
         console.error("Error in login:", error);

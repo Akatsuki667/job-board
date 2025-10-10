@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
     document.querySelector('button').addEventListener('click', async (e) => {
-        e.preventDefault;
-        const email = document.getElementById('email');
-        const password = document.getElementById('password');
+        e.preventDefault();
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
 
         const loginData = {
             email: email,

@@ -16,6 +16,7 @@ app.use(cors());
 
 // Plug middlewares
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'frontEnd')));
 app.use(session({
   secret: process.env.SESSION_SECRET || 'mon_super_secret',
   resave: false,
@@ -26,16 +27,17 @@ app.use(session({
 // Plug route to api
 const authRoute = require('./backEnd/routes/authRoute');
 app.use('/api/auth', authRoute);
+const applicantRoute = require('./backEnd/routes/applicantRoute');
 
-// app.get('/', (req, res) => {
-//   res.sendFile(path.join(__dirname, 'frontEnd', 'html', 'register.html'));
-// });
+app.get('/register', (req, res) => {
+  res.sendFile(path.join(__dirname, 'frontEnd', 'html', 'register.html'));
+});
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'frontEnd', 'html', 'login.html'));
 })
 
-app.get('/candidat', (req, res) => {
+app.get('/candidate', (req, res) => {
   res.sendFile(path.join(__dirname, 'frontEnd', 'html', 'candidate.html'));
 });
 

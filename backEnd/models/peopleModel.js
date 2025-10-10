@@ -46,7 +46,7 @@ async function createUser(objectUser) {
       objectUser.status,
     ];
 
-    const newUser = "INSERT INTO people (email, password_hash, name, phone, status) VALUES ($1, $2, $3, $4, $5) RETURNING id, email, name, phone, status";
+    const newUser = "INSERT INTO people (email, password_hash, name, phone, status) VALUES ($1, $2, $3, $4, $5) RETURNING id, email, password_hash, name, phone, status";
     const result = await pool.query(newUser, arrayobjectUser);
     return result.rows[0];
   } catch (error) {
@@ -109,7 +109,7 @@ async function findByEmail(email) {
     // Define request SQL with SQL injection protection
     const sql = "SELECT * FROM people WHERE email=$1";
     const result = await pool.query(sql, [email]);
-    return result.rows;
+    return result.rows[0];
   } catch (error) {
     console.error("Error in findByEmail", error);
     throw error;
