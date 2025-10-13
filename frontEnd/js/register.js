@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('registerForm');
     
-    form.addEventListener('submit', async (e) => {
+    form.addEventListener('submit',(e) => {
         e.preventDefault();
         
         // Fetch data to buil JavaScript object
@@ -20,31 +20,23 @@ document.addEventListener('DOMContentLoaded', function () {
             status: status
         };
 
-        try {
-            // Send registerData to database
-            const response = await fetch('/api/auth/register', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(registerData)
-            });
-
-            // Response of server
-            const data = await response.json();
-
-            if (response.ok) {
-                alert('Registration successful! Redirecting to login...');
-                // Reidrection client to login
-                setTimeout(() => {
-                    window.location.href = data.redirect || '/';
-                }, 1000);
-            } else {
-                alert(`Error: ${data.error || 'Registration failed'}`);
-            }
-        } catch (error) {
-            console.error('Error during registration:', error);
-            alert('Server error. Please try again later.');
-        }
+        // Send registerData to database
+        fetch('/api/auth/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            // Conversion JavaScript object to string to send request
+            body: JSON.stringify(registerData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert('Registration successful! Redirecting to login');
+            setTimeout(() => {
+                window.location.href = data.redirect;
+            }, 1000);
+        })
+        .catch (error => {
+        console.error('Error: ', error)
+        alert('Server error. Please try again later.');
+        });
     });
 });

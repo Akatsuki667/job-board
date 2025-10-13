@@ -1,36 +1,59 @@
 # Server
-Fichier de __point d'entrée__ de l'application.
-- Configuration serveur `Express`
-- Définition middlewares
-- Configuration des routes
-- Démarrage serveur
+Fichier de __point d'entrée__ de l'application, configuration d'un serveur `Express.js`.
 
-### const path = require('path');
-- Importation module `path` de `Node.js`
-- Permet la manipualtion des chemins de fichiers sécurisée
+## Lancement
+`npm run dev`
 
-### const app = express();
-- Création d'une __instance__ de l'application `Express`.
-- `app` : objet principal de gestion des requêtes
+## Dépendances
+- `express` : Framework `Node.js` pour création du serveur
+- `cors` : Active les requpetes cross-origin (partage de ressource entre domaines)
+- `path` : Gestion des chemins de fichiers
+- `express-session` : Gestion des session utilisateur (authentification persistantes)
+- `dotenv` : Charge les variables d'environnement depuis `.env`
 
-### app.use(express.json());
-Active un __middlewares__ qui parse (analyse) les données `JSON`. Permet à `Express` de comprendre les données `JSON` envoyés dans les __requêtes HTTP__
+## Configuration
+__Variable d'environnement__
+```
+PORT=3000
+SESSION_SECRET=mon_super_secret
+```
 
-- __middlewares__ : Fonctions qui peuvent accéder à l'objet __Request(req)__ et __Response(res)__, permet le traitement des __requêtes HTTP__.
+__Initialisation__
+```javascript
+const app = express();
+const PORT = process.env.PORT;
+```
 
-Permet la lecture de `req.body`
+## Middlewares
+__CORS__
+```javascript
+app.use(cors());
+```
+Permet aux clients (navigateurs) d'effectuer des requêtes depuis d'autres domaines.
 
-### app.use(express.static(path.join(__dirname, 'frontEnd')));
-- `express.static` : __Middlewares__ pour servir des fichiers statiques (`HTML`,`CSS`,`JS`,`Images`). Rend les fichiers accessible directement via `HTPP`
-- `path.join(__dirname, 'frontEnd')` : 
-    - `__dirname` : Chemin absolu du dossier où se trouve `server.js`
-    - `path.join()` : Combine les chemins de manière sécurisée
+__JSON Parser__
+```javascript
+app.use(express.json());
+```
+Lecture des données `JSON` envoyées dans le body des requêtes
 
-### app.use('/api/advertisements', advertisementsRoutes);
-Branche un routeur sur un __préfixe de chemin spécifique__.
+__Fichiers stattiques__
+```javascript
+app.use(express.static(path.join(__dirname, 'frontEnd')));
+```
 
-Toutes les routes de `advertisementsRoutes` auront ce __préfixe__.
+__Sessions__
+```javascript
+app.use(session({
+    secret: process.env.SESSION_SECRET || 'mon_super_secret',
+    resave: false,
+    saveUninitialized: false,
+    cookie: { 
+        httpOnly: true,    // Empêche l'accès JavaScript au cookie
+        secure: false,     // true en production avec HTTPS
+        maxAge: 24h        // Durée de vie: 24 heures
+    }
+}));
+```
+Gestion session utilisateur pour maintenir la connexion
 
-### res.sendFile(path.join(__dirname, 'frontEnd', 'candidate.html'));
-- Envoie un fichier en réponse (`candidate.html`)
-- `path.join(__dirname, 'frontEnd', 'candidate.html')` : Construction du chemin pour accéder au fichier

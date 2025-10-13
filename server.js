@@ -12,16 +12,16 @@ const app = express();
 // Define PORT
 const PORT = process.env.PORT;
 
-app.use(cors());
-
 // Plug middlewares
+app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'frontEnd')));
 app.use(session({
-  secret: process.env.SESSION_SECRET || 'mon_super_secret',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
   cookie: { httpOnly: true, secure: false, maxAge: 24 * 60 * 60 * 1000 }
+  // 24 = h; 60 = min; 60 = sec; 1000 = msec
 }));
 
 // Plug route to api
@@ -40,6 +40,10 @@ app.get('/', (req, res) => {
 
 app.get('/candidate', (req, res) => {
   res.sendFile(path.join(__dirname, 'frontEnd', 'html', 'candidate.html'));
+});
+
+app.get('/company', (req, res) => {
+  res.sendFile(path.join(__dirname, 'frontEnd', 'html', 'company.html'));
 });
 
 app.listen(PORT, () => {

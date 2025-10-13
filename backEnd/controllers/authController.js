@@ -12,7 +12,7 @@ const register = async (req, res) => {
         const phone = req.body.phone;
 
         // Check valid fields
-        if (!email || !password) {
+        if (!email || !password || !name) {
             return res.status(400).json({error: "All fields are required"})
         }
         // Check valid email
@@ -74,15 +74,25 @@ const login = async (req, res) => {
             return res.status(400).json({error: "Email invalid"});
         }
         const existingUser = await user.findByEmail(email);
-            if (!existingUser) {
-                return res.status(400).json({error: "Email is invalid"});
-            }
+        if (!existingUser) {
+            return res.status(400).json({error: "Email is invalid"});
+        }
         const isPasswordValid = await bcrypt.compare(password, existingUser.password_hash);
         if (!isPasswordValid) {
             return res.status(400).json({error: "Password is invalid"});
         }
 
         req.session.userId = existingUser.id;
+
+        // Build redirection path
+        let redirectUrl = '';
+        if (existingUser.status === 'candidate') {
+            redirectUrl = '/candidate';
+        } else if (existingUser.status === 'company') {
+            redirectUrl = '/company';
+        } else if (existingUser.status === 'admin') {
+            redirectUrl = '/admin';
+        }
 
         return res.status(200).json({
             message: "Login successful",
@@ -93,7 +103,7 @@ const login = async (req, res) => {
                 status: existingUser.status,
                 phone: existingUser.phone
             },
-            redirect: '/candidate'
+            redirect : redirectUrl
         });
     } catch (error) {
         console.error("Error in login:", error);

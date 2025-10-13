@@ -8,26 +8,34 @@
     </head>
 
     <body>
-    <div class="ads-container">
-        <!-- Card Template -->
-        <div class="ads-card" style="display: none;">
-            <h1 class="ads-title"></h1>
-            <p class="ads-short-description"></p>
-            <button class="learn-more">Learn More</button>
+        <header>
+            <h1>Job Board</h1>
+        </header>
+        
+        <div class="ads-container">
+            <!-- Card Template -->
+            <div class="ads-card" style="display: none;">
+                <h1 class="ads-title"></h1>
+                <p class="ads-short-description"></p>
+                <button class="learn-more">Learn More</button>
+                <button class="apply">Apply</button>
+            </div>
+        </div>
+
+        <!-- Modal Template -->
+        <div class="modal-card" style="display: none;">
+            <button class="modal-close">X</button>
+            <h1 class="modal-title"></h1>
+            <p class="modal-long-description"></p>
+            <p><b>Wages:</b> <span class="modal-wages"></span></p>
+            <p><b>Working time:</b> <span class="modal-working-time"></span></p>
+            <p><b>Place:</b> <span class="modal-place"></span></p>
             <button class="apply">Apply</button>
         </div>
-    </div>
 
-    <!-- Modal Template -->
-    <div class="modal-card" style="display: none;">
-        <button class="modal-close">X</button>
-        <h1 class="modal-title"></h1>
-        <p class="modal-long-description"></p>
-        <p><b>Wages:</b> <span class="modal-wages"></span></p>
-        <p><b>Working time:</b> <span class="modal-working-time"></span></p>
-        <p><b>Place:</b> <span class="modal-place"></span></p>
-        <button class="apply">Apply</button>
-    </div>
+        <footer>
+            <p>&copy; Pré-MSC REN-1</p>
+        </footer>
 
         <script src="../js/candidate.js"></script>
     </body>

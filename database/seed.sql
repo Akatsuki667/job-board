@@ -3,14 +3,14 @@
 -- Insertion people --
 INSERT INTO people(email, password_hash, name, phone, status) VALUES
 -- Admin --
-('admin@jobboard.com', '$2b$10$abcdefghijklmnopqrstuv', 'Admin Principal', '0601020304', 'admin'),
+('admin@jobboard.com', 'admin123456', 'Admin Principal', '0601020304', 'admin'),
 
 -- Companies --
-('contact@techcorp.fr', '$2b$10$abcdefghijklmnopqrstuv', 'Marie Dubois', '0612345678', 'company'),
-('rh@innovsolutions.fr', '$2b$10$abcdefghijklmnopqrstuv', 'Pierre Martin', '0623456789', 'company'),
+('contact@techcorp.fr', 'company123456', 'Marie Dubois', '0612345678', 'company'),
+('rh@innovsolutions.fr', 'company123456', 'Pierre Martin', '0623456789', 'company'),
 
 -- Candidate --
-('jean.dupont@email.fr', '$2b$10$abcdefghijklmnopqrstuv', 'Jean Dupont', '0645678901', 'candidate');
+('jean.dupont@email.fr', 'people123456', 'Jean Dupont', '0645678901', 'candidate');
 
 -- Insertion of companies--
 INSERT INTO companies (id_people, company_name) VALUES
