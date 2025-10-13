@@ -15,7 +15,7 @@ const PORT = process.env.PORT;
 // Plug middlewares
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'frontEnd')));
+app.use(express.static(path.join(__dirname, 'frontEnd','html')));
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
@@ -29,6 +29,8 @@ const authRoute = require('./backEnd/routes/authRoute');
 app.use('/api/auth', authRoute);
 const applicantRoute = require('./backEnd/routes/applicantRoute');
 app.use('/api/applicant', applicantRoute);
+const companyRoute = require('./backEnd/routes/companyRoute');
+app.use('/api/company', companyRoute);
 
 app.get('/register', (req, res) => {
   res.sendFile(path.join(__dirname, 'frontEnd', 'html', 'register.html'));

@@ -6,6 +6,6 @@ const router = express.Router();
 const applicationController = require('../controllers/applicationController');
  
 // Define road of GET request /id: match with the company's ID
-router.get('/Message/id:', applicationController.getAllMess);
+router.get('/Message/:id', applicationController.getAllMess);
  
 module.exports = router;
