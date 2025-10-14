@@ -9,4 +9,10 @@ const authController = require('../controllers/authController');
 router.post('/register', authController.register);
 router.post('/login', authController.login);
 
+// Define route GET request
+router.get('/me', authController.getCurrentUser);
+
 module.exports = router;
+
+
+

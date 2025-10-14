@@ -111,4 +111,33 @@ const login = async (req, res) => {
     }
 }
 
-module.exports = { register, login };
+
+
+const getCurrentUser = async (req, res) => {
+  try {
+    if (!req.session.userId) {
+      return res.status(401).json({ user: null });
+    }
+
+    const currentUser = await user.findUserById(req.session.userId);
+    if (!currentUser) {
+      return res.status(404).json({ user: null });
+    }
+
+    res.json({
+      user: {
+        id: currentUser.id,
+        email: currentUser.email,
+        name: currentUser.name,
+        status: currentUser.status,
+        phone: currentUser.phone
+      }
+    });
+  } catch (error) {
+    console.error("Error in getCurrentUser:", error);
+    res.status(500).json({ error: "Server error" });
+  }
+};
+
+
+module.exports = { register, login, getCurrentUser };

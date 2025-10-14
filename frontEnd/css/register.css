@@ -1,0 +1,154 @@
+:root {
+    --primary: #1d4ed8;
+    --primary-hover: #102464;
+    --background: #f8fafc;
+    /* Background defines the base layer of the page */
+    --surface: #ffffff;
+    /* Surface represents the next elevated layer above it */
+    --text: #1e293b;
+    --text-light: #64748b;
+    --border: #e2e8f0;
+    --radius: 12px;
+    --transition: 0.25s ease;
+    --shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    /* No horizontal shadow, shadow set 4px below the element, blur radius, black shadow with 10% opacity */
+}
+
+* {
+    box-sizing: border-box;
+    /* Used to maintain box layout regardless of screen size */
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+header {
+    margin-bottom: 32px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2rem;
+    /* Default 1rem = 16px, so 2rem = 32px */
+    font-weight: bold;
+}
+
+main {
+    width: 100%;
+    /* Child of body container, use its width */
+    max-width: 400px;
+    /* Child of body container, use its width up to 400px */
+    background: var(--surface);
+    padding: 32px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 6px;
+    margin-top: 16px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"] {
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 1rem;
+    /* If the border color changes, it animates smoothly. If a shadow appears, it animates smoothly */
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="tel"]:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+/* Target any div inside the form */
+form div {
+    display: flex;
+    /* gap: is used to define the space between items inside a flex or grid container. In our case, there will be 16 pixels of space between each label*/
+    gap: 16px;
+    margin-top: 12px;
+}
+
+form div label {
+    display: flex;
+    align-items: center;
+    /* In this case, gap: is spacing the radio button and its value. */
+    gap: 6px;
+}
+
+button[type="submit"] {
+    margin-top: 24px;
+    padding: 12px;
+    background: var(--primary);
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: var(--radius);
+    /* cursor: pointer sets the mouse cursor. */
+    cursor: pointer;
+    transition: background-color var(--transition), transform var(--transition);
+}
+
+/* Change the background color of the Submit button when hovered, plus move it upward by 2 pixels. */
+button[type="submit"]:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+p {
+    margin-top: 16px;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    text-align: center;
+}
+
+p a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color var(--transition);
+}
+
+p a:hover {
+    color: var(--primary-hover);
+}
+
+footer {
+    margin-top: 40px;
+    font-size: 0.85rem;
+    color: var(--text-light);
+    text-align: center;
+}
+
+@media (max-width: 400px) {
+    form div {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        /* smaller vertical gap */
+    }
+}

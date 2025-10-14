@@ -1,4 +1,5 @@
 const { getAllMessages } = require('../models/applicationModel');
+const { createApplication } = require('../models/applicationModel');
 
 // Asynchrone function
 const getAllMess = async (req, res) => {
@@ -13,4 +14,15 @@ const getAllMess = async (req, res) => {
     }
 };
 
-module.exports = { getAllMess };
+const createNewApplication = async (req, res) => {
+    try {
+        const objectApplication = req.body;
+        const newApp = await createApplication(objectApplication);
+        res.status(201).json(newApp)
+    } catch (error) {
+        console.error("Error creating Application:", error);
+        res.status(500).json({ message: "Error server" });
+    }
+};
+
+module.exports = { getAllMess, createNewApplication};

@@ -27,7 +27,12 @@ document.addEventListener('DOMContentLoaded', function () {
             // Conversion JavaScript object to string to send request
             body: JSON.stringify(registerData)
         })
-        .then(response => response.json())
+        .then(response => {
+            if(!response.ok) {
+                throw new Error('Error registration');
+            }
+            return response.json();
+        })
         .then(data => {
             alert('Registration successful! Redirecting to login');
             setTimeout(() => {

@@ -3,7 +3,12 @@ const pool = require("../../config/database");
 async function getAllAdvertisements() {
   try {
     // Define SQL request
-    const sql = "SELECT * FROM advertisements ORDER BY created_at DESC";
+    const sql = `SELECT 
+    advertisements.*,
+    companies.company_name AS company_name
+    FROM advertisements
+    INNER JOIN companies ON advertisements.id_company = companies.id 
+    ORDER BY advertisements.created_at DESC`;
     // Waiting for result
     const result = await pool.query(sql);
     // Return table advertisement
@@ -17,7 +22,12 @@ async function getAllAdvertisements() {
 async function findAdvertisementsById(dataId) {
   try {
     // Define SQL request with SQL injection protection
-    const sql = 'SELECT * FROM advertisements WHERE id=$1';
+    const sql = `SELECT 
+    advertisements.*,
+    companies.company_name AS company_name
+    FROM advertisements
+    INNER JOIN companies ON advertisements.id_company = companies.id 
+    WHERE advertisements.id =$1`;
     //Waiting for result
     const result = await pool.query(sql, [dataId]);
     return result.rows;
