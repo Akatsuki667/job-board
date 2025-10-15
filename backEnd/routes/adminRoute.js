@@ -3,6 +3,21 @@ const express = require('express');
 // Create router
 const router = express.Router();
 
+const peopleController = require('../controllers/peopleController');
+
+// Define route of GET requesst
+router.get('/', peopleController.getAll);
+router.get('/:id', peopleController.findById);
+
+// Define route of POST request
+router.post('/', peopleController.createNewUser);
+
+// Define route of PUT request
+router.put('/:id', peopleController.updateUser);
+
+// Define route of DELETE
+router.delete('/:id', peopleController.deleteUser);
+
 const advertisementsController = require('../controllers/advertisementsController');
 
 // Define road of GET requesst

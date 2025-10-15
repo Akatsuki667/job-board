@@ -33,7 +33,24 @@ INSERT INTO advertisements (id_company, title, short_description, long_descripti
  'Nous cherchons un Designer UX/UI créatif pour concevoir des interfaces intuitives et esthétiques. Vous travaillerez en étroite collaboration avec les développeurs et les product managers. Maîtrise de Figma et Adobe XD indispensable.',
  '32000-42000€/an', 
  'Temps plein (35h)', 
- 'Bordeaux - Sur site');
+ 'Bordeaux - Sur site'),
+
+  -- InnovSolutions --
+(2, 'Développeur Backend Node.js',
+ 'Construisez l’architecture serveur de demain',
+ 'Nous recherchons un développeur backend spécialisé en Node.js pour concevoir des API robustes et scalables. Vous serez amené à travailler en microservices avec Docker et MongoDB. Expérience de 2 ans minimum requise.',
+ '40000-50000€/an',
+ 'Temps plein (39h)',
+ 'Lille - Télétravail partiel'),
+
+  -- InnovSolutions --
+(2, 'Chef de Projet IT',
+ 'Pilotez des projets digitaux d’envergure',
+ 'En tant que Chef de Projet IT, vous coordonnerez les équipes techniques et fonctionnelles sur des projets de transformation digitale. Une excellente communication et une rigueur organisationnelle sont indispensables.',
+ '45000-55000€/an',
+ 'Temps plein (35h)',
+ 'Lyon - Sur site');
+
 
 -- Insertion of applications --
 INSERT INTO applications (id_people, id_advertisement, message) VALUES

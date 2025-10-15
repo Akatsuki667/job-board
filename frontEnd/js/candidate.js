@@ -4,6 +4,10 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelector('.modal-close').addEventListener('click', () => {
         document.querySelector('.modal-card').style.display = 'none';
     });
+    document.querySelector('.form-close').addEventListener('click', () => {
+        document.querySelector('.form-card').style.display = 'none';
+    });
+
     document.querySelector('.form-card form').addEventListener('submit', function (event) {
         event.preventDefault();
         exportForm();
@@ -67,6 +71,12 @@ function showModal(id) {
             document.querySelector('.modal-wages').textContent = ads.wages;
             document.querySelector('.modal-working-time').textContent = ads.working_time;
             document.querySelector('.modal-place').textContent = ads.place;
+
+            document.querySelector('.apply-modal').addEventListener('click', () => {
+                findUserId().then(userId => {
+                    fillForm(userId,id);
+                })
+            });
 
             // Afficher
             document.querySelector('.modal-card').style.display = 'block';
@@ -149,8 +159,8 @@ function exportForm() {
         .then(data => {
             alert('Application sent!');
             console.log('Server response:', data);
-            document.querySelector('.form-card form').reset();
             document.querySelector('.form-card').style.display = 'none';
+            
         })
         .catch(error => {
             console.error('Submission error :', error);

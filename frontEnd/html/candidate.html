@@ -17,11 +17,17 @@
     <div class="ads-container">
         <!-- Card Template -->
         <div class="ads-card" style="display: none;">
-            <h1 class="ads-title"></h1>
-            <p><b>Company:</b> <span class="company-name"></span></p>
-            <p class="ads-short-description"></p>
-            <button class="learn-more">Learn More</button>
-            <button class="apply">Apply</button>
+            <div class="ads-content">
+                <div class="title-card">
+                    <h1 class="ads-title"></h1>
+                </div>
+                <p><b>Company:</b> <span class="company-name"></span></p>
+                <p class="ads-short-description"></p>
+            </div>
+            <div class="card-buttons">
+                <button class="learn-more">Learn More</button>
+                <button class="apply">Apply</button>
+            </div>
         </div>
 
         <!-- Modal Template -->
@@ -33,27 +39,24 @@
             <p><b>Wages:</b> <span class="modal-wages"></span></p>
             <p><b>Working time:</b> <span class="modal-working-time"></span></p>
             <p><b>Place:</b> <span class="modal-place"></span></p>
-            <button class="apply">Apply</button>
+            <button class="apply-modal">Apply</button>
         </div>
         <!-- Form Template -->
         <div class="form-card" style="display: none;">
-            <form>
+             <button class="form-close">X</button><br>
+            <form><br>
                 <input id="form-id-user" type="hidden">
                 <input id="form-id-ads" type="hidden">
-                <label for="name">Name</label>
+                <label for="name">Name:</label><br>
                 <input type="text" id="form-name" name="name" required><br>
-                <label for="email">email</label>
+                <label for="email">Email:</label><br>
                 <input type="email" id="form-email"><br>
-                <label for="phone">Phone</label>
+                <label for="phone">Phone:</label><br>
                 <input type="tel" id="form-phone" name="phone"><br>
-                <textarea id="Message" rows="4" cols="50" placeholder="enter your message here"></textarea><br>
+                <textarea id="Message" rows="4" cols="50" placeholder=" Enter your message here"></textarea><br>
                 <button type="submit">Submit</button>
             </form>
         </div>
-
-
-
-
         <footer>
             <p>&copy; Pré-MSC REN-1</p>
         </footer>

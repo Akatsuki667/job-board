@@ -1,0 +1,35 @@
+:root {
+    --primary: #1d4ed8;
+    --primary-hover: #102464;
+    --background: #f8fafc;
+    /* Background defines the base layer of the page */
+    --surface: #ffffff;
+    /* Surface represents the next elevated layer above it */
+    --text: #1e293b;
+    --text-light: #64748b;
+    --border: #e2e8f0;
+    --radius: 12px;
+    --transition: 0.25s ease;
+    --shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    /* No horizontal shadow, shadow set 4px below the element, blur radius, black shadow with 10% opacity */
+}
+
+header {
+    margin-bottom: 32px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 3rem;
+    /* Default 1rem = 16px, so 2rem = 32px */
+    font-weight: bold;
+}
+
+footer {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    font-size: 0.85rem;
+    color: var(--text-light);
+    text-align: center;
+}

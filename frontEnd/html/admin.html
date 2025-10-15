@@ -3,15 +3,36 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="../css/candidate.css" rel="stylesheet">
-        <title>Company</title>
+        <link href="../css/admin.css" rel="stylesheet">
+        <title>Admin</title>
     </head>
 
     <body>
         <header>
-            <h1>Job Board</h1>
+            <h1>Monitoring Job Board</h1>
         </header>
 
+        <div class="users">
+            <h1>Users</h1>
+            <button type="button" id="create">Create</button>
+            <!-- Candidate template -->
+            <div class="candidate" style="display: none;">
+                <h2>Candidate</h2>
+                <h3 id="name"></h3>
+                <h3 id ="status"></h3>
+                <button type="button" id="delete">Delete</button>
+                <button type="button" id="modify">Modify</button>
+            </div>
+
+            <!-- Company template -->
+             <div class="company" style="display: none;">
+                <h2>Company</h2>
+                <h3 id="nameCompany"></h3>
+                <h3 id ="statusCompany"></h3>
+                <button type="button" id="delete">Delete</button>
+                <button type="button" id="modify">Modify</button>
+             </div>
+        </div>
         <footer>
             <p>&copy; Pré-MSC REN-1</p>
         </footer>

@@ -11,7 +11,7 @@ Prpéaration des données récupéré dans un objet `JavaSscript`
 - `preventDefaut()` : Empêche rechargement de la page
 - Collection des données du formulaire
 - Création de l'objet register Data
-- `fetch` : Envoie de la requête au serveur
+- `fetch` : Envoie de la __requête POST__ au serveur
 - gestion message success ou error
 - `.json()` : conversion de la réponse serveur
 - gestion success ou error
